@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 
     // Define the configuration for all the tasks
     grunt.initConfig({
-        
+
         pkg: grunt.file.readJSON('package.json'),
 
         // Make sure code styles are up to par and there are no obvious mistakes
@@ -59,7 +59,7 @@ module.exports = function (grunt) {
             }
         },
         useminPrepare: {
-            html: 'app/menu.html',
+            html: 'app/index.html',
             options: {
                 dest: 'dist'
             }
@@ -146,7 +146,7 @@ module.exports = function (grunt) {
                     base: {
                         path: 'dist',
                         options: {
-                            index: 'menu.html',
+                            index: 'index.html',
                             maxAge: 300000
                         }
                     }

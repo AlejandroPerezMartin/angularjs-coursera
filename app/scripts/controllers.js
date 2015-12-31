@@ -66,7 +66,7 @@ app.controller('FeedbackController', ['$scope', function ($scope) {
 
         console.log($scope.feedback);
 
-        if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
+        if ($scope.feedback.agree && ($scope.feedback.mychannel === "")) {
             $scope.invalidChannelSelection = true;
             console.log('incorrect');
         } else {
@@ -87,10 +87,9 @@ app.controller('FeedbackController', ['$scope', function ($scope) {
 
 }]);
 
-app.controller('DishDetailController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-
-    $scope.dish = menuFactory.getDish(3);
-
+.controller('DishDetailController', ['$scope', '$routeParams', 'menuFactory', function ($scope, $routeParams, menuFactory) {
+    var dish = menuFactory.getDish(parseInt($routeParams.id, 10));
+    $scope.dish = dish;
 }]);
 
 app.controller('DishCommentController', ['$scope', function ($scope) {
@@ -120,5 +119,6 @@ app.controller('DishCommentController', ['$scope', function ($scope) {
             comment: "",
             date: ""
         };
-    }
+    };
+
 }]);
