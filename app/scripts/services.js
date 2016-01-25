@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('confusionApp')
+
     .service('menuFactory', function () {
 
         var dishes = [{

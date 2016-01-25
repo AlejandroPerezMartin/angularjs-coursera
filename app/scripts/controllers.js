@@ -1,8 +1,8 @@
 'use strict';
 
-var app = angular.module('confusionApp');
+angular.module('confusionApp')
 
-app.controller('menuController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
+    .controller('menuController', ['$scope', 'menuFactory', function ($scope, menuFactory) {
 
     $scope.dishes = menuFactory.getDishes();
 
@@ -35,9 +35,9 @@ app.controller('menuController', ['$scope', 'menuFactory', function ($scope, men
     };
 
 
-}]);
+}])
 
-app.controller('ContactController', ['$scope', function ($scope) {
+.controller('ContactController', ['$scope', function ($scope) {
 
     $scope.feedback = {
         mychannel: "",
@@ -58,9 +58,9 @@ app.controller('ContactController', ['$scope', function ($scope) {
     $scope.channels = channels;
     $scope.invalidChannelSelection = false;
 
-}]);
+}])
 
-app.controller('FeedbackController', ['$scope', function ($scope) {
+.controller('FeedbackController', ['$scope', function ($scope) {
 
     $scope.sendFeedback = function () {
 
@@ -85,14 +85,14 @@ app.controller('FeedbackController', ['$scope', function ($scope) {
         }
     };
 
-}]);
+}])
 
-.controller('DishDetailController', ['$scope', '$routeParams', 'menuFactory', function ($scope, $routeParams, menuFactory) {
-    var dish = menuFactory.getDish(parseInt($routeParams.id, 10));
-    $scope.dish = dish;
-}]);
+.controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
+            var dish= menuFactory.getDish(parseInt($stateParams.id,10));
+                        $scope.dish = dish;
+                    }])
 
-app.controller('DishCommentController', ['$scope', function ($scope) {
+.controller('DishCommentController', ['$scope', function ($scope) {
 
     //Step 1: Create a JavaScript object to hold the comment from the form
     $scope.comment = {
@@ -121,4 +121,34 @@ app.controller('DishCommentController', ['$scope', function ($scope) {
         };
     };
 
-}]);
+}])
+
+.controller('AboutController', ['$scope', 'corporateFactory',
+    function($scope, corporateFactory){
+
+      $scope.leaders = corporateFactory.getLeaders();
+      console.log($scope.leaders);
+  }])
+
+  .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory',
+    function($scope, menuFactory, corporateFactory){
+
+      $scope.showDish = false;
+      $scope.message="Loading ...";
+      $scope.dish = menuFactory.getDishes().get({id:0})
+        .$promise.then(
+              function(response){
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function(response) {
+                    $scope.message = "Error: "+response.status + " " + response.statusText;
+                }
+          );
+      $scope.promotion = menuFactory.getPromotion(0);
+      console.log($scope.promotion);
+
+
+        $scope.leader = corporateFactory.getLeader(3);
+        console.log($scope.leader);
+  }]);
