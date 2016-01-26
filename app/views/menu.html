@@ -1,16 +1,16 @@
 <div class="container">
-    <div class="row row-content" ng-controller="menuController">
+    <div class="row row-content" ng-controller="MenuController">
         <div class="col-xs-12">
             <button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right">{{showDetails ? 'Hide details' : 'Show details'}}</button>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" ng-class="{active:isSelected(1)}">
-                    <a ng-click="selectTab(1)" aria-controls="all menu" role="tab">The Menu</a></li>
+                    <a ng-click="select(1)" aria-controls="all menu" role="tab">The Menu</a></li>
                 <li role="presentation" ng-class="{active:isSelected(2)}">
-                    <a ng-click="selectTab(2)" aria-controls="appetizers" role="tab">Appetizers</a></li>
+                    <a ng-click="select(2)" aria-controls="appetizers" role="tab">Appetizers</a></li>
                 <li role="presentation" ng-class="{active:isSelected(3)}">
-                    <a ng-click="selectTab(3)" aria-controls="mains" role="tab">Mains</a></li>
+                    <a ng-click="select(3)" aria-controls="mains" role="tab">Mains</a></li>
                 <li role="presentation" ng-class="{active:isSelected(4)}">
-                    <a ng-click="selectTab(4)" aria-controls="desserts" role="tab">Desserts</a></li>
+                    <a ng-click="select(4)" aria-controls="desserts" role="tab">Desserts</a></li>
             </ul>
             <div class="tab-content">
                 <ul class="media-list tab-pane fade in active">
