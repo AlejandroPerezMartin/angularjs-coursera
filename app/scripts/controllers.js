@@ -92,21 +92,12 @@ angular.module('confusionApp')
             };
         }])
 
-        .controller('IndexController', ['$scope', function($scope) {
+        .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
-            $scope.mycomment = {rating:5, comment:"", author:"", date:""};
+            $scope.specialist = corporateFactory.getLeader(3);
+            $scope.featured = menuFactory.getDish(0);
+            $scope.promotion = menuFactory.getPromotion(0);
 
-            $scope.submitComment = function () {
-
-                $scope.mycomment.date = new Date().toISOString();
-                console.log($scope.mycomment);
-
-                $scope.dish.comments.push($scope.mycomment);
-
-                $scope.commentForm.$setPristine();
-
-                $scope.mycomment = {rating:5, comment:"", author:"", date:""};
-            };
         }])
 
         .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {

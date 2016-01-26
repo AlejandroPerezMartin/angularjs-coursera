@@ -92,10 +92,16 @@
             <h2>
                 Corporate Leadership
             </h2>
-            <ul class="media-list">
-                <h4>
-                    {{leaders}}
-                </h4>
+            <ul class="media-list" ng-repeat="leader in leaders">
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object thumbnail" src="{{leader.image}}" alt="{{leader.name + " " + leader.abbr}}">
+                    </div>
+                    <div class="media-body">
+                    <h4 class="media-heading">{{leader.name}} <small>{{leader.designation}}</small></h4>
+                        <p>{{leader.description}}</p>
+                    </div>
+                </div>
             </ul>
         </div>
         <div class="col-xs-12 col-sm-3">
