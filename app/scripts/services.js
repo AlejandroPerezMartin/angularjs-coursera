@@ -17,7 +17,7 @@ angular.module('confusionApp')
             ];
 
             this.getDishes = function(){
-                return $resource(baseURL+"dishes/:id",null,  {'update':{method:'PUT' }});
+                return $resource(baseURL + "dishes/:id", null, {'update': {method: 'PUT'}});
             };
 
             this.getPromotion = function(index) {
